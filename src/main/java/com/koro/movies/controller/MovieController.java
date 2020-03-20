@@ -1,5 +1,6 @@
 package com.koro.movies.controller;
 
+import com.koro.movies.annotation.SendMail;
 import com.koro.movies.model.Movie;
 import com.koro.movies.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class MovieController {
     }
 
     @PostMapping("/add")
+    @SendMail
     public ResponseEntity addMovie(@RequestBody Movie newMovie) {
         if(movieService.addMovie(newMovie)) {
             return new ResponseEntity(HttpStatus.CREATED);
